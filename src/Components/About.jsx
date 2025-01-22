@@ -13,6 +13,7 @@ const About = () => {
     }
     return age_now;
   }
+  
   return (
     <div className='about' id="about">
       <h2>Get To Know Me</h2>
@@ -24,4 +25,5 @@ const About = () => {
     </div>
   )
 }
+
 export default About;
