@@ -2,9 +2,10 @@ import React, { useState, useRef } from 'react'
 
 import '../styles/Home.css'
 
+//imported libraries from react or node
 import TypeWriterEffect from 'react-typewriter-effect';
 import { animateScroll } from 'react-scroll';
-import { saveAs } from "file-saver";
+import { saveAs } from "file-saver"; //file saver is a library that allows you to download files to the users devices by calling the saveAs function :D 
 import { Link } from 'react-scroll';
 
 const Home = () => {
@@ -14,8 +15,8 @@ const Home = () => {
   const textContent = useRef();
   const handleDownload = () => {
     saveAs(
-      "google drive url",
-      "Resume.pdf"
+      `${process.env.PUBLIC_URL}/Resume.pdf`, //helps generate the correct path
+      "MariaPop_Resume.pdf"
     )
   }
 
@@ -35,13 +36,12 @@ const Home = () => {
     }
   }
 
-
   return (
     <div className='home' id='home'>
       <div className="home-text">
         <h1>
           <span className='gradientText'>
-            Hi, I'm Lorem!
+            Hi, I'm Maria!
           </span>
           <span>
             <span onClick={handleChange}>
