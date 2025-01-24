@@ -35,4 +35,4 @@ npm start
 
 ## License
 
-This project is adapted from Dun-sin's Tempalte Portfolio and is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is adapted from [Dun-sin's Template Portfolio](https://github.com/Dun-sin/template-portfolio) and is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
