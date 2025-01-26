@@ -21,6 +21,7 @@ const Mail = () => {
 
   const validation = (email, name, message, subject) => {
     const acceptedEmail = ['gmail.com', 'yahoo.com', 'yahoo.co.in', 'outlook.com', 'protonmail.com', 'aol.com', 'icloud.com', 'me.com', 'mac.com', 'gmx.com', 'hey.com']
+    
     if (email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
       acceptedEmail.includes(email.split('@')[1]) ?
         valid.email = true : valid.email = false
@@ -48,6 +49,7 @@ const Mail = () => {
   const handleClick = () => {
     validation(toSend.email, toSend.name, toSend.message, toSend.subject);
     const condition = Object.values(valid).every((value) => value === true)
+
     if (!condition) {
       error.current.style.display = 'block'
     } else {
@@ -64,13 +66,13 @@ const Mail = () => {
     }
   }
 
-
   const handleChange = (e) => {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
     const arrayOfSub = ['work', 'chat', 'collaboration']
+
     if (toSend.subject === '') {
       setIsDisabled(false)
     } else {

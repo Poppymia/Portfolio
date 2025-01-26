@@ -1,6 +1,6 @@
 :root {
 	--skill-color: black;
-  --skill-color-light: #6253e8;
+  --skill-color-light: #3a5a40;
 	--container-width: 600px;
 	--skill-size: calc(var(--container-width) / 5);
 }

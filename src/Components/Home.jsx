@@ -10,12 +10,13 @@ import { Link } from 'react-scroll';
 
 const Home = () => {
   const [number, setNumber] = useState(0);
-  const arrayOfWords = ['Tap again', 'Helllo', 'You found this', 'I added this...', 'because it seemed cool', `so here's something`, 'did you know that...', `You can't breathe and talk.`, 'the earth is 71% water.', `It snows in the Sahara Desert
-`,]
+  const arrayOfWords = ['Tap again', 'Helllo', 'You found this', 'I added this...', 'because it seemed cool', `so here's something`, 
+    'did you know that...', `You can't breathe and talk.`, 'the earth is 71% water.', `It snows in the Sahara Desert`,]
+
   const textContent = useRef();
   const handleDownload = () => {
     saveAs(
-      `${process.env.PUBLIC_URL}/Resume.pdf`, //helps generate the correct path
+      `${process.env.PUBLIC_URL}/Resume.pdf`, //helps generate the correct path in local environment
       "MariaPop_Resume.pdf"
     )
   }
@@ -23,11 +24,13 @@ const Home = () => {
   const handleChange = () => {
     textContent.current.style.display = 'inline-block';
     textContent.current.innerText = arrayOfWords[number]
+
     if ((arrayOfWords.length - 1) !== number) {
       setNumber(number + 1)
     }
+
     if ((arrayOfWords.length - 1) === number) {
-      // something will be here soon
+      // something will be here soon 
       setTimeout(() => {
         textContent.current.style.display = 'none'
         animateScroll.scrollTo(350)
@@ -41,7 +44,7 @@ const Home = () => {
       <div className="home-text">
         <h1>
           <span className='gradientText'>
-            Hi, I'm Maria!
+            Hello, I'm Maria!
           </span>
           <span>
             <span onClick={handleChange}>
@@ -63,6 +66,7 @@ const Home = () => {
           typeSpeed={35}
         />
         <div className="btns">
+
           <Link className='btn1' activeClass="active" to="mail" spy={true} smooth={true} offset={0} duration={500}>
             Hire Me
           </Link>
@@ -70,7 +74,6 @@ const Home = () => {
           <div onClick={handleDownload} className='btn2'>View Resume</div>
         </div>
       </div>
-
     </div >
   )
 }
