@@ -29,7 +29,7 @@
 	border-width: 1px;
 	border-image-source: linear-gradient(
 		60deg,
-		#6253e8,
+		#57cc99,
 		var(--social-main-color)
 	);
 }
