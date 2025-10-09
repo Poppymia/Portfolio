@@ -87,6 +87,7 @@ footer {
   font-family: "Poppins", sans-serif;
   color: #3a3335;
   background: #fdf0d5;
+  /*padding: 120px 0; */
   border-top: 1px solid #f0544f;
   /* full-width background; inner container centers content */
 }
