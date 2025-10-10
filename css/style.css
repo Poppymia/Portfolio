@@ -1,105 +1,398 @@
+:root {
+  --bg: #fdf0d5;
+  --text: #3a3335;
+  --accent: #f0544f;
+  --muted: #c6d8d3;
+  --max-width: 1100px;
+  --gutter: 2rem;
+  --ff-k2d: "K2D", system-ui, sans-serif;
+  --ff-ui: system-ui, sans-serif;
+}
+
 /* Reset + base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
-  font-family: "K2D", system-ui, sans-serif;
-  color: #3a3335; /* set body text to black */
-  background-color: #fdf0d5;
+  font-family: var(--ff-k2d);
+  color: var(--text);
+  background: var(--bg);
   line-height: 1.6;
 }
 
-/* Navbar */
+/* Header / Navbar */
 header {
-  background: #fdf0d5;
+  background: var(--bg);
   position: sticky;
   top: 0;
-  z-index: 50; /* ensure header sits above page content */
-  /* remove box-shadow if any and use a small centered dot attached to the header */
+  z-index: 50;
 }
-
-/* small circular dot centered and attached to the bottom of the header */
 header::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -6px; /* slightly overlaps header to appear connected */
+  bottom: -6px;
   width: 6px;
   height: 6px;
-  background: #3a3335;
+  background: var(--text);
   border-radius: 50%;
-  box-shadow: none;
   z-index: 40;
 }
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1100px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1rem var(--gutter);
 }
-
 .nav-links {
   display: flex;
   gap: 1.5rem;
   list-style: none;
 }
-
 .nav-links a {
   text-decoration: none;
-  color: inherit; /* use body text color */
+  color: inherit;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: color 0.25s;
 }
-
 .nav-links a:hover {
-  color: #f0544f;
+  color: var(--accent);
 }
 
-/* Hero section */
+/* logo: red text + diagonal split square mark */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  margin: 0;
+}
+.logo-text {
+  color: var(--accent); /* red same as border */
+  font-family: var(--ff-k2d);
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+/* logo mark: diagonal split + red outline */
+.logo-mark {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 3px;
+  background-image: linear-gradient(135deg, var(--accent) 50%, var(--bg) 50%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04) inset;
+  flex: 0 0 20px;
+
+  /* red outline to emphasize the mark */
+  border: 2px solid var(--accent);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.logo-mark:focus,
+.logo-mark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(240, 84, 79, 0.12);
+  outline: none;
+}
+
+/* small responsive tweak so logo scales on narrow screens */
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 1rem;
+  }
+  .logo-mark {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Hero */
 .hero {
+  position: relative; /* added */
   min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start; /* align to left */
+  align-items: flex-start;
+  padding: 5.5rem 5rem;
   text-align: left;
-  padding: 5.5rem 5rem; /* spacing from top and left */
 }
-
 .hero-frame {
-  /* mimics the Figma frame width and keeps it responsive */
   width: 768px;
   max-width: 90%;
-  height: auto;
   line-height: 1.05;
-  color: #3a3335;
-  text-align: left;
+  color: var(--text);
 }
-
 .hero-title {
   display: inline-block;
-  font-size: 48px; /* Figma baseline */
+  font-size: 48px;
   line-height: 1.05;
   word-wrap: break-word;
 }
-
 .k2d {
-  font-family: "K2D", system-ui, sans-serif;
+  font-family: var(--ff-k2d);
   font-weight: 400;
 }
 .kalam {
-  /* override Kalam to use K2D so all text uses K2D */
-  font-family: "K2D", system-ui, sans-serif;
+  font-family: var(--ff-k2d);
   font-weight: 400;
+} /* using K2D across site */
+
+/* small note in bottom-right of hero */
+.hero-note {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  font-family: var(--ff-ui);
+  color: var(--text);
+  background: transparent;
+  font-size: 16px; /* increased size */
+  line-height: 1.4;
+  max-width: 360px; /* constrain line length */
+  text-align: right;
+  padding: 8px 12px;
+  border-radius: 6px;
+  opacity: 0.95;
+  pointer-events: none; /* non-interactive text */
 }
 
+/* responsive tweak so note doesn't overlap on small screens */
+@media (max-width: 800px) {
+  .hero-note {
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 14px;
+    max-width: 45%;
+  }
+}
+
+/* Footer */
+footer {
+  background: var(--bg);
+  color: var(--text);
+}
+.footer-inner {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.25rem var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+footer a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent);
+}
+.footer-left {
+  padding: 0.5rem 1rem 0.5rem 0;
+  text-align: left;
+}
+.footer-right {
+  padding: 0.5rem 0 0.5rem 1rem;
+  text-align: right;
+}
+.footer-nav .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  align-items: flex-end;
+}
+
+/* Projects — use same thin accent line as footer */
+.projects-divider {
+  width: 100%;
+  max-width: 800px;
+  height: 2px;
+  background: var(--accent);
+  margin: 48px auto 12px; /* increased top space */
+  border-radius: 2px;
+}
+
+/* Project card (scaled down) */
+.project-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  max-width: 1132px;
+  width: 90%;
+  margin: 32px auto 48px; /* slight extra top spacing */
+  position: relative;
+  min-height: 180px;
+}
+
+/* logo mark: diagonal split + red outline */
+.logo-mark {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 3px;
+  background-image: linear-gradient(135deg, var(--accent) 50%, var(--bg) 50%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04) inset;
+  flex: 0 0 20px;
+
+  /* red outline to emphasize the mark */
+  border: 2px solid var(--accent);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.logo-mark:focus,
+.logo-mark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(240, 84, 79, 0.12);
+  outline: none;
+}
+
+/* make thumbnail an anchor (clickable + keyboard focusable) - no outline */
+.project-thumb {
+  display: block; /* allow anchor to size like the div */
+  width: 160px;
+  height: 160px;
+  background: var(--muted);
+  flex: 0 0 160px;
+  border-radius: 4px;
+  position: relative;
+  top: 2px;
+  text-decoration: none;
+  color: inherit;
+
+  /* remove border — keep subtle lift on hover */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.project-thumb:hover,
+.project-thumb:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  outline: none;
+}
+
+/* add left padding so titles/desc aren't flush left */
+.project-info {
+  flex: 1;
+  position: relative;
+  padding-top: 14px;
+  padding-left: 16px; /* <- added padding */
+  min-height: 120px;
+}
+.project-meta {
+  font-family: var(--ff-ui);
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.project-title {
+  font-family: var(--ff-k2d);
+  color: var(--text);
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0 0 8px;
+}
+.project-desc {
+  font-family: var(--ff-ui);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.35;
+  max-width: 420px;
+}
+
+/* Overlay link + outline (scaled + interactive) */
+.project-link-outline {
+  position: absolute;
+  right: 0;
+  top: 64px;
+  width: 150px;
+  height: 44px;
+  border-radius: 22px;
+  border: 1px solid var(--text);
+  z-index: 1;
+  background: transparent;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.project-link {
+  position: absolute;
+  right: 0;
+  top: 64px;
+  width: 150px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-k2d);
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+  z-index: 2;
+  cursor: pointer;
+  border-radius: 22px;
+  background: transparent;
+  padding: 0 10px;
+  box-sizing: border-box;
+  transition: background-color 0.18s, color 0.18s, transform 0.12s;
+}
+.project-link:hover,
+.project-link:focus {
+  background: var(--accent);
+  color: white;
+  outline: none;
+  transform: translateY(-2px);
+}
+.project-link:focus {
+  box-shadow: 0 0 0 4px rgba(240, 84, 79, 0.12);
+}
+
+/* Responsiveness (adjusted sizes) */
+@media (max-width: 800px) {
+  .project-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .project-thumb {
+    width: 100%;
+    height: 140px;
+  }
+  .project-title {
+    font-size: 28px;
+  }
+  .project-desc {
+    font-size: 16px;
+  }
+  .project-link-outline,
+  .project-link {
+    position: static;
+    width: auto;
+    height: auto;
+    border-radius: 999px;
+    padding: 8px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .projects-divider {
+    max-width: 90%;
+  }
+}
 @media (max-width: 480px) {
   .hero-title {
     font-size: 28px;
@@ -109,90 +402,265 @@ header::after {
   }
 }
 
-/* Footer */
-footer {
-  font-family: "K2D", system-ui, sans-serif;
-  color: #3a3335;
-  background: #fdf0d5;
-  /* full-width background; inner container centers content */
-}
-
-.footer-inner {
-  position: relative;
-  max-width: 1100px;
+/* case-study page container so headings/text have breathing room */
+.case-study {
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1.25rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 2rem var(--gutter);
+}
+.case-study h1,
+.case-study h2,
+.case-study p {
+  padding-left: 8px; /* small internal padding so content isn't stuck to the left */
 }
 
-/* shorter centered red line above footer-inner */
-.footer-inner::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px; /* shorter line */
-  height: 2px;
-  background: #f0544f;
-  border-radius: 2px;
+/* Contact page / form (simple, matches Figma layout) */
+.contact-main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem calc(var(--gutter) * 2); /* increase left/right breathing room */
+  box-sizing: border-box;
 }
 
-/* Footer and other links: inherit text color; hover uses accent */
-footer a,
-a {
-  color: inherit;
-  text-decoration: none;
+.contact-title {
+  font-family: var(--ff-k2d);
+  font-size: 48px;
+  margin-bottom: 1.5rem;
+  color: var(--text);
 }
 
-a:hover {
-  color: #f0544f;
+/* Form layout (slightly smaller labels & controls) */
+.contact-form {
+  max-width: 760px; /* prevent the form from stretching too wide */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 16px; /* tightened spacing */
+  align-items: start;
 }
 
-.footer-left {
-  padding: 0.5rem 1rem 0.5rem 0;
-  text-align: left;
-}
-
-.footer-right {
-  padding: 0.5rem 0 0.5rem 1rem;
-  text-align: right;
-}
-
-.footer-nav {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-/* Make the footer's list vertical while keeping header nav horizontal */
-.footer-nav .nav-links {
+.contact-form label {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  align-items: flex-end; /* keep links aligned to the right in footer */
+  gap: 6px;
+  font-family: var(--ff-ui);
+  color: var(--text);
+  font-size: 18px; /* reduced from 24px */
 }
 
-@media (max-width: 600px) {
-  .footer-inner {
+/* full width rows */
+.contact-form .full {
+  grid-column: 1 / -1;
+}
+
+/* inputs / textarea - slightly smaller */
+.contact-form input,
+.contact-form textarea {
+  background: #fff;
+  border: 1px solid rgba(58, 51, 53, 0.08);
+  padding: 6px 8px;
+  height: 28px; /* reduced height */
+  font-size: 14px; /* reduced font size */
+  border-radius: 4px;
+  font-family: var(--ff-ui);
+  color: var(--text);
+  box-shadow: none;
+  outline: none;
+  transition: box-shadow 0.12s, transform 0.08s;
+  resize: vertical;
+}
+
+.contact-form textarea {
+  height: auto;
+  min-height: 90px; /* slightly smaller than before */
+  padding: 8px;
+  line-height: 1.4;
+}
+
+/* focus state */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  box-shadow: 0 6px 18px rgba(240, 84, 79, 0.08);
+  border-color: var(--accent);
+}
+
+/* actions */
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+/* simple button */
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 14px; /* slightly smaller */
+  border-radius: 8px;
+  font-family: var(--ff-k2d);
+  font-size: 14px; /* slightly smaller */
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.btn:hover,
+.btn:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(240, 84, 79, 0.12);
+  outline: none;
+}
+
+/* About page spacing & typography adjustments */
+.about-main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem var(--gutter); /* padding around the whole about content */
+}
+
+.about-hero {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  padding-right: 3rem; /* extra right padding */
+}
+
+.about-text {
+  flex: 1;
+  min-width: 0;
+  padding: 14px; /* extra breathing room around text */
+  box-sizing: border-box;
+}
+
+.about-title {
+  font-family: var(--ff-k2d);
+  font-size: 48px; /* same size as other main section titles */
+  margin: 0 0 12px;
+  color: var(--text);
+}
+
+.about-lead,
+.about-text p {
+  font-family: var(--ff-ui);
+  font-size: 18px;
+  color: var(--text);
+  line-height: 1.45;
+  margin: 0 0 12px;
+}
+
+/* profile visual (placeholder circle) */
+.profile-visual {
+  width: 220px;
+  height: 220px;
+  flex: 0 0 220px;
+  border-radius: 50%;
+  background: var(--muted);
+  margin-left: 16px;
+}
+
+/* details section (skills + education) */
+.about-details {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+  align-items: start;
+  margin-top: 2.25rem;
+  padding: 0 0 2rem 0;
+}
+
+/* About details: skills as a single row, education full width under it.
+   Reduced font sizes for a more compact layout. */
+.about-details {
+  margin-top: 2rem;
+  padding: 0 0 2rem 0;
+}
+
+/* Skills section (heading + two-column lists) */
+.skills-section,
+.education-section {
+  max-width: var(--max-width);
+  margin: 2rem auto 0;
+  padding: 0 var(--gutter);
+}
+
+.skills-section > h2,
+.education-section > h2 {
+  font-family: var(--ff-k2d);
+  font-size: 40px; /* matches other section titles but slightly compact */
+  margin: 0 0 12px;
+  color: var(--text);
+}
+
+/* two-column skills row */
+.skills-row {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.skill-group {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.skill-group h3 {
+  font-size: 28px;
+  margin: 0 0 8px;
+  color: var(--text);
+  font-weight: 400; /* unbolded */
+}
+
+/* show bullets and add left padding for readability */
+.skill-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* education full-width under skills */
+.education-row {
+  margin-top: 12px;
+  padding: 0; /* <- ensure no extra left/right padding */
+}
+
+.education-list {
+  list-style: disc;
+  padding-left: 1.25rem; /* same as .skill-list */
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+/* responsive: stack columns on small screens */
+@media (max-width: 800px) {
+  .skills-row {
     flex-direction: column;
-    text-align: center;
-    gap: 0.75rem;
-    padding: 1rem;
+    gap: 18px;
   }
+  .skills-section > h2,
+  .education-section > h2 {
+    font-size: 32px;
+  }
+  .skill-group h3 {
+    font-size: 24px;
+    font-weight: 400;
+  }
+  .skill-list,
+  .education-list {
+    font-size: 15px;
+  }
+}
 
-  .footer-left,
-  .footer-right {
-    text-align: center;
-    padding: 0;
-  }
-
-  .footer-nav {
-    justify-content: center;
-  }
+/* section divider (thin line, full width) */
+.section-divider {
+  width: 800px; /* match footer line width */
+  height: 2px;
+  background: var(--accent); /* same accent color as footer */
+  margin: 28px auto; /* centered like the footer line */
+  border-radius: 2px;
 }

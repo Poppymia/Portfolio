@@ -1,14 +1,97 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maria Pop | Projects</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Projects — Maria Pop</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=K2D:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-
   <body>
-    <script src="script.js"></script>
+    <header>
+      <nav class="navbar">
+        <h2 class="logo">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-text">Maria Pop</span>
+        </h2>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Page title (same style as other section titles) -->
+      <section
+        class="projects-hero"
+        style="
+          max-width: var(--max-width);
+          margin: 4rem auto 2rem;
+          padding: 0 var(--gutter);
+        "
+      >
+        <h1 class="about-title k2d">Projects</h1>
+      </section>
+
+      <section class="projects" style="padding: 0 var(--gutter)">
+        <!-- duplicate of the case study card from index.html -->
+        <div class="project-card" role="article" aria-labelledby="p1-title">
+          <a
+            href="case-study.html"
+            class="project-thumb"
+            aria-label="Open Waste-Less case study"
+          ></a>
+
+          <div class="project-info">
+            <div class="project-meta">Case Study // NO.1</div>
+            <h3 id="p1-title" class="project-title k2d">Waste-Less</h3>
+            <p class="project-desc">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+              erat volutpat.
+            </p>
+
+            <a
+              href="case-study.html"
+              class="project-link"
+              aria-label="Open Waste-Less case study"
+              >view me</a
+            >
+            <span class="project-link-outline" aria-hidden="true"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-left">
+          <p>Thanks for stopping by!</p>
+          <p>
+            Let's connect:
+            <a href="mailto:miapop007@gmail.com">miapop007@gmail.com</a>
+          </p>
+        </div>
+
+        <div class="footer-right">
+          <nav class="footer-nav" aria-label="Footer navigation">
+            <ul class="nav-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
   </body>
 </html>

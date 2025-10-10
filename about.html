@@ -6,12 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About | Maria Pop</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=K2D:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <header>
       <nav class="navbar">
-        <h2 class="logo">Maria Pop</h2>
+        <h2 class="logo">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-text">Maria Pop</span>
+        </h2>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
@@ -21,14 +28,80 @@
       </nav>
     </header>
 
-    <main class="about">
-      <section class="about-section">
-        <p>
-          Let's connect:
-          <a href="mailto:miapop007@gmail.com">miapop007@gmail.com</a>
-        </p>
+    <main class="about-main">
+      <section class="about-hero">
+        <div class="about-text">
+          <h1 class="about-title k2d">About Me</h1>
+          <p class="about-lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat a ante. Vestibulum ante ipsum primis in faucibus orci
+            luctus et ultrices posuere cubilia curae; Cras suscipit, sapien quis
+            volutpat facilisis, tortor urna pulvinar lorem, id vulputate purus
+            nibh sit amet nisl.
+          </p>
 
-        <button onclick="window.open('resume.pdf')">Download Resume</button>
+          <p class="about-lead">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </div>
+
+        <div class="profile-visual" aria-hidden="true"></div>
+      </section>
+
+      <!-- thin red divider under About Me (single, same as footer) -->
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <!-- skills: heading + two-column lists -->
+      <section class="skills-section">
+        <h2 class="k2d">Skills</h2>
+
+        <div class="skills-row">
+          <div class="skill-group">
+            <h3>Programming Languages</h3>
+            <ul class="skill-list">
+              <li>C#</li>
+              <li>JavaScript</li>
+              <li>Dart</li>
+              <li>Java</li>
+              <li>HTML &amp; CSS</li>
+              <li>SQL</li>
+              <li>Kotlin</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Tools &amp; Frameworks</h3>
+            <ul class="skill-list">
+              <li>Git</li>
+              <li>Adobe Suite</li>
+              <li>Microsoft Office</li>
+              <li>React</li>
+              <li>Node.js</li>
+              <li>ASP.NET / .NET Core</li>
+              <li>MongoDB</li>
+              <li>Flutter</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="education-section">
+        <h2 class="k2d">Education</h2>
+        <div class="education-row">
+          <ul class="education-list">
+            <li>
+              Advanced Diploma in IT Innovation &amp; Design — Conestoga College
+              (Expected Graduation May 2026) — GPA 3.8
+            </li>
+            <li>
+              B.Sc. in General Science — Wilfrid Laurier University (2018–2022)
+              — GPA 3.0
+            </li>
+          </ul>
+        </div>
       </section>
     </main>
 
@@ -52,5 +125,7 @@
         </div>
       </div>
     </footer>
+
+    <script src="js/script.js"></script>
   </body>
 </html>
