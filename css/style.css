@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "K2D", system-ui, sans-serif;
   color: #3a3335; /* set body text to black */
   background-color: #fdf0d5;
   line-height: 1.6;
@@ -64,41 +64,80 @@ header::after {
 
 /* Hero section */
 .hero {
-  height: 80vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: flex-start;
+  align-items: flex-start; /* align to left */
+  text-align: left;
+  padding: 5.5rem 5rem; /* spacing from top and left */
 }
 
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
+.hero-frame {
+  /* mimics the Figma frame width and keeps it responsive */
+  width: 768px;
+  max-width: 90%;
+  height: auto;
+  line-height: 1.05;
+  color: #3a3335;
+  text-align: left;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  max-width: 600px;
+.hero-title {
+  display: inline-block;
+  font-size: 48px; /* Figma baseline */
+  line-height: 1.05;
+  word-wrap: break-word;
+}
+
+.k2d {
+  font-family: "K2D", system-ui, sans-serif;
+  font-weight: 400;
+}
+.kalam {
+  /* override Kalam to use K2D so all text uses K2D */
+  font-family: "K2D", system-ui, sans-serif;
+  font-weight: 400;
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px;
+  }
+  .hero-frame {
+    max-width: 95%;
+  }
 }
 
 /* Footer */
 footer {
-  font-family: "Poppins", sans-serif;
+  font-family: "K2D", system-ui, sans-serif;
   color: #3a3335;
   background: #fdf0d5;
-  /*padding: 120px 0; */
-  border-top: 1px solid #f0544f;
   /* full-width background; inner container centers content */
 }
 
 .footer-inner {
+  position: relative;
   max-width: 1100px;
   margin: 0 auto;
   padding: 1.25rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/* shorter centered red line above footer-inner */
+.footer-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; /* shorter line */
+  height: 2px;
+  background: #f0544f;
+  border-radius: 2px;
 }
 
 /* Footer and other links: inherit text color; hover uses accent */
