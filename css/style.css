@@ -15,11 +15,28 @@
   padding: 0;
   box-sizing: border-box;
 }
+html,
+body {
+  height: 100%;
+}
 body {
   font-family: var(--ff-k2d);
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
+}
+
+/* Opt-in sticky footer: only enable layout when body has .full-height
+   Add class="full-height" to the <body> on pages you want the footer pinned
+   (e.g. projects.html, contact.html). This avoids changing layouts site-wide. */
+body.full-height {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body.full-height main {
+  flex: 1 0 auto;
 }
 
 /* Header / Navbar */
@@ -159,9 +176,9 @@ header::after {
   font-family: var(--ff-ui);
   color: var(--text);
   background: transparent;
-  font-size: 16px; /* increased size */
+  font-size: 18px; /* increased size */
   line-height: 1.4;
-  max-width: 360px; /* constrain line length */
+  max-width: 500px; /* constrain line length */
   text-align: right;
   padding: 8px 12px;
   border-radius: 6px;
@@ -422,6 +439,51 @@ a:hover {
 .case-study h2,
 .case-study p {
   padding-left: 8px; /* small internal padding so content isn't stuck to the left */
+}
+
+/* Simple hero card for case studies */
+
+.cs-hero-card {
+  background: #c6d8d3;
+  border-radius: 0; /* optional if you want sharp edges */
+  padding: 28px 32px;
+  width: 100vw; /* fill the viewport width */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+}
+
+.cs-card-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #3a3335;
+  margin: 0 0 8px;
+}
+.cs-card-sub {
+  color: #3a3335;
+  opacity: 0.95;
+  font-size: 18px;
+}
+
+@media (max-width: 640px) {
+  .cs-hero-card {
+    padding: 20px 18px;
+    min-height: 120px;
+  }
+  .cs-card-title {
+    font-size: 28px;
+  }
+  .cs-card-sub {
+    font-size: 14px;
+  }
 }
 
 /* Contact page / form (simple, matches Figma layout) */
