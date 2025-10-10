@@ -58,10 +58,18 @@ header::after {
   text-decoration: none;
   color: inherit;
   font-weight: 500;
+  font-size: 20px; /* increased link size */
   transition: color 0.25s;
 }
-.nav-links a:hover {
-  color: var(--accent);
+
+/* keep header readable on small screens */
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 1rem;
+  }
+  .nav-links a {
+    font-size: 18px;
+  } /* slightly smaller on narrow screens */
 }
 
 /* logo: red text + diagonal split square mark */
@@ -73,9 +81,9 @@ header::after {
   margin: 0;
 }
 .logo-text {
-  color: var(--accent); /* red same as border */
+  color: var(--accent);
   font-family: var(--ff-k2d);
-  font-size: 1.125rem;
+  font-size: 1.25rem; /* increased from 1.125rem */
   line-height: 1;
 }
 
@@ -139,8 +147,8 @@ header::after {
   font-weight: 400;
 }
 .kalam {
-  font-family: var(--ff-k2d);
-  font-weight: 400;
+  font-family: "Kalam", var(--ff-k2d);
+  font-weight: 400; /* Kalam Regular */
 } /* using K2D across site */
 
 /* small note in bottom-right of hero */
@@ -206,6 +214,8 @@ a:hover {
 .footer-left {
   padding: 0.5rem 1rem 0.5rem 0;
   text-align: left;
+  font-size: 16px; /* increased size */
+  line-height: 1.45;
 }
 .footer-right {
   padding: 0.5rem 0 0.5rem 1rem;
