@@ -80,14 +80,6 @@ header::after {
 }
 
 /* keep header readable on small screens */
-@media (max-width: 480px) {
-  .logo-text {
-    font-size: 1rem;
-  }
-  .nav-links a {
-    font-size: 18px;
-  } /* slightly smaller on narrow screens */
-}
 
 /* logo: red text + diagonal split square mark */
 .logo {
@@ -104,37 +96,9 @@ header::after {
   line-height: 1;
 }
 
-/* logo mark: diagonal split + red outline */
-.logo-mark {
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  border-radius: 3px;
-  background-image: linear-gradient(135deg, var(--accent) 50%, var(--bg) 50%);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04) inset;
-  flex: 0 0 20px;
-
-  /* red outline to emphasize the mark */
-  border: 2px solid var(--accent);
-  transition: transform 0.12s, box-shadow 0.12s;
-}
-.logo-mark:focus,
-.logo-mark:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(240, 84, 79, 0.12);
-  outline: none;
-}
+/* duplicate .logo-mark rules removed; primary definition lives near header */
 
 /* small responsive tweak so logo scales on narrow screens */
-@media (max-width: 480px) {
-  .logo-text {
-    font-size: 1rem;
-  }
-  .logo-mark {
-    width: 18px;
-    height: 18px;
-  }
-}
 
 /* Hero */
 .hero {
@@ -187,14 +151,7 @@ header::after {
 }
 
 /* responsive tweak so note doesn't overlap on small screens */
-@media (max-width: 800px) {
-  .hero-note {
-    right: 1rem;
-    bottom: 1rem;
-    font-size: 14px;
-    max-width: 45%;
-  }
-}
+/* moved into consolidated @media (max-width: 800px) block below */
 
 /* Footer */
 footer {
@@ -388,39 +345,21 @@ a:hover {
   box-shadow: 0 0 0 4px rgba(240, 84, 79, 0.12);
 }
 
-/* Responsiveness (adjusted sizes) */
-@media (max-width: 800px) {
-  .project-card {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-  }
-  .project-thumb {
-    width: 100%;
-    height: 140px;
-  }
-  .project-title {
-    font-size: 28px;
-  }
-  .project-desc {
-    font-size: 16px;
-  }
-  .project-link-outline,
-  .project-link {
-    position: static;
-    width: auto;
-    height: auto;
-    border-radius: 999px;
-    padding: 8px 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .projects-divider {
-    max-width: 90%;
-  }
-}
+/* Responsiveness (adjusted sizes) — consolidated 800px rules are placed near the end */
 @media (max-width: 480px) {
+  /* header adjustments */
+  .logo-text {
+    font-size: 1rem;
+  }
+  .nav-links a {
+    font-size: 18px;
+  }
+  .logo-mark {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* hero adjustments */
   .hero-title {
     font-size: 28px;
   }
@@ -708,8 +647,59 @@ a:hover {
   color: var(--text);
 }
 
-/* responsive: stack columns on small screens */
+/* responsive: stack columns on small screens — moved to consolidated 800px block at end */
+
+/* section divider (thin line, full width) */
+.section-divider {
+  width: 800px; /* match footer line width */
+  height: 2px;
+  background: var(--accent); /* same accent color as footer */
+  margin: 28px auto; /* centered like the footer line */
+  border-radius: 2px;
+}
+
+/* Consolidated responsive rules for <= 800px */
 @media (max-width: 800px) {
+  /* hero note tweak */
+  .hero-note {
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 14px;
+    max-width: 45%;
+  }
+
+  /* projects layout */
+  .project-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .project-thumb {
+    width: 100%;
+    height: 140px;
+  }
+  .project-title {
+    font-size: 28px;
+  }
+  .project-desc {
+    font-size: 16px;
+  }
+  .project-link-outline,
+  .project-link {
+    position: static;
+    width: auto;
+    height: auto;
+    border-radius: 999px;
+    padding: 8px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .projects-divider {
+    max-width: 90%;
+  }
+
+  /* about: stack skills/education */
   .skills-row {
     flex-direction: column;
     gap: 18px;
@@ -726,13 +716,4 @@ a:hover {
   .education-list {
     font-size: 15px;
   }
-}
-
-/* section divider (thin line, full width) */
-.section-divider {
-  width: 800px; /* match footer line width */
-  height: 2px;
-  background: var(--accent); /* same accent color as footer */
-  margin: 28px auto; /* centered like the footer line */
-  border-radius: 2px;
 }
