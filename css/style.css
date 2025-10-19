@@ -1,7 +1,7 @@
 :root {
   --bg: #fdf0d5;
   --text: #3a3335;
-  --accent: #f0544f;
+  --accent: #3a506b;
   --muted: #c6d8d3;
   --max-width: 1100px;
   --gutter: 2rem;
@@ -24,6 +24,10 @@ body {
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
+}
+/*for larger breaks*/
+.break-break {
+  height: 2rem;
 }
 
 /* Opt-in sticky footer: only enable layout when body has .full-height
@@ -376,8 +380,25 @@ a:hover {
 }
 .case-study h1,
 .case-study h2,
+.case-study h3,
 .case-study p {
   padding-left: 8px; /* small internal padding so content isn't stuck to the left */
+}
+
+.case-study ul {
+  padding-left: 30px; /* indent lists */
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.image-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 /* Simple hero card for case studies */
